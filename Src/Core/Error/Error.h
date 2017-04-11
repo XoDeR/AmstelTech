@@ -108,7 +108,7 @@ namespace RioCore
 
 #if RIO_DEBUG
 #define RIO_ASSERT(condition, message, ...) do { if (!(condition)) {\
-		Rio::ErrorFn::abort(__FILE__, __LINE__, "\nAssertion failed: %s\n\t" message "\n", #condition, ##__VA_ARGS__); }} while (0)
+		RioCore::ErrorFn::abort(__FILE__, __LINE__, "\nAssertion failed: %s\n\t" message "\n", #condition, ##__VA_ARGS__); }} while (0)
 #else
 #define RIO_ASSERT(...) ((void)0)
 #endif // RIO_DEBUG
@@ -124,6 +124,5 @@ namespace RioCore
 
 extern void dbgPrintfVargs(const char* format, va_list argList);
 extern void dbgPrintf(const char* format, ...);
-extern void dbgPrintfData(const void* data, uint32_t size, const char* format, ...);
 
 // Copyright (c) 2016, 2017 Volodymyr Syvochka
