@@ -9,9 +9,6 @@ namespace RioCore
     // MurmurHash2 was written by Austin Appleby, and is placed in the public
     // domain. The author hereby disclaims copyright to this source code.
 
-    // TODO
-    // TO MERGE
-
 #define MURMUR_M 0x5bd1e995
 #define MURMUR_R 24
 #define mmix(_h, _k) { _k *= MURMUR_M; _k ^= _k >> MURMUR_R; _k *= MURMUR_M; _h *= MURMUR_M; _h ^= _k; }

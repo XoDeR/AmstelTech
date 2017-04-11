@@ -1,3 +1,4 @@
+// Copyright (c) 2016, 2017 Volodymyr Syvochka
 #pragma once
 
 #include "SpscQueue.h"
@@ -71,3 +72,4 @@ namespace RioCore
 	};
 
 } // namespace RioCore
+// Copyright (c) 2016, 2017 Volodymyr Syvochka

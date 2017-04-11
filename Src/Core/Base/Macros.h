@@ -2,7 +2,7 @@
 #pragma once
 
 #if RIO_COMPILER_MSVC
-// Workaround MSVS bug...
+// Workaround MSVS bug
 #define RIO_VA_ARGS_PASS(...) RIO_VA_ARGS_PASS_1_ __VA_ARGS__ RIO_VA_ARGS_PASS_2_
 #define RIO_VA_ARGS_PASS_1_ (
 #define RIO_VA_ARGS_PASS_2_ )
@@ -47,9 +47,9 @@
 #endif // defined(__has_extension)
 
 #if RIO_COMPILER_GCC || RIO_COMPILER_CLANG
-#define RIO_ALIGN_DECL(_align, _decl) _decl __attribute__( (aligned(_align) ) )
+#define RIO_ALIGN_DECL(_align, _decl) _decl __attribute__((aligned(_align)))
 #define RIO_ALLOW_UNUSED __attribute__( (unused) )
-#define RIO_FORCE_INLINE inline __attribute__( (__always_inline__) )
+#define RIO_FORCE_INLINE inline __attribute__((__always_inline__))
 #define RIO_FUNCTION __PRETTY_FUNCTION__
 #define RIO_LIKELY(_x)   __builtin_expect(!!(_x), 1)
 #define RIO_UNLIKELY(_x) __builtin_expect(!!(_x), 0)
@@ -57,7 +57,7 @@
 #define RIO_NO_RETURN __attribute__( (noreturn) )
 #define RIO_NO_VTABLE
 #define RIO_OVERRIDE
-#define RIO_PRINTF_ARGS(_format, _args) __attribute__( (format(__printf__, _format, _args) ) )
+#define RIO_PRINTF_ARGS(_format, _args) __attribute__( (format(__printf__, _format, _args)))
 #if RIO_CLANG_HAS_FEATURE(cxx_thread_local)
 #define RIO_THREAD_LOCAL __thread
 #endif // RIO_COMPILER_CLANG
@@ -97,7 +97,7 @@
 #define RIO_MACRO_BLOCK_END break; }
 #define RIO_NOOP(...) RIO_MACRO_BLOCK_BEGIN RIO_MACRO_BLOCK_END
 
-#define RIO_UNUSED_1(_a1) RIO_MACRO_BLOCK_BEGIN (void)(true ? (void)0 : ( (void)(_a1) ) ); RIO_MACRO_BLOCK_END
+#define RIO_UNUSED_1(_a1) RIO_MACRO_BLOCK_BEGIN (void)(true ? (void)0 : ((void)(_a1))); RIO_MACRO_BLOCK_END
 #define RIO_UNUSED_2(_a1, _a2) RIO_UNUSED_1(_a1); RIO_UNUSED_1(_a2)
 #define RIO_UNUSED_3(_a1, _a2, _a3) RIO_UNUSED_2(_a1, _a2); RIO_UNUSED_1(_a3)
 #define RIO_UNUSED_4(_a1, _a2, _a3, _a4) RIO_UNUSED_3(_a1, _a2, _a3); RIO_UNUSED_1(_a4)
@@ -128,9 +128,9 @@
 #endif // RIO_COMPILER_CLANG
 
 #if RIO_COMPILER_GCC && RIO_COMPILER_GCC >= 40600
-#define RIO_PRAGMA_DIAGNOSTIC_PUSH_GCC_()       _Pragma("GCC diagnostic push")
-#define RIO_PRAGMA_DIAGNOSTIC_POP_GCC_()        _Pragma("GCC diagnostic pop")
-#define RIO_PRAGMA_DIAGNOSTIC_IGNORED_GCC(_x)   _Pragma(RIO_STRINGIZE(GCC diagnostic ignored _x))
+#define RIO_PRAGMA_DIAGNOSTIC_PUSH_GCC_() _Pragma("GCC diagnostic push")
+#define RIO_PRAGMA_DIAGNOSTIC_POP_GCC_() _Pragma("GCC diagnostic pop")
+#define RIO_PRAGMA_DIAGNOSTIC_IGNORED_GCC(_x) _Pragma(RIO_STRINGIZE(GCC diagnostic ignored _x))
 #else
 #define RIO_PRAGMA_DIAGNOSTIC_PUSH_GCC_()
 #define RIO_PRAGMA_DIAGNOSTIC_POP_GCC_()
@@ -138,8 +138,8 @@
 #endif // RIO_COMPILER_GCC
 
 #if RIO_COMPILER_MSVC
-#define RIO_PRAGMA_DIAGNOSTIC_PUSH_MSVC_()     __pragma(warning(push))
-#define RIO_PRAGMA_DIAGNOSTIC_POP_MSVC_()      __pragma(warning(pop))
+#define RIO_PRAGMA_DIAGNOSTIC_PUSH_MSVC_() __pragma(warning(push))
+#define RIO_PRAGMA_DIAGNOSTIC_POP_MSVC_() __pragma(warning(pop))
 #define RIO_PRAGMA_DIAGNOSTIC_IGNORED_MSVC(_x) __pragma(warning(disable:_x))
 #else
 #define RIO_PRAGMA_DIAGNOSTIC_PUSH_MSVC_()
@@ -152,12 +152,12 @@
 #define RIO_PRAGMA_DIAGNOSTIC_POP RIO_PRAGMA_DIAGNOSTIC_POP_CLANG_
 #define RIO_PRAGMA_DIAGNOSTIC_IGNORED_CLANG_GCC RIO_PRAGMA_DIAGNOSTIC_IGNORED_CLANG
 #elif RIO_COMPILER_GCC
-#define RIO_PRAGMA_DIAGNOSTIC_PUSH              RIO_PRAGMA_DIAGNOSTIC_PUSH_GCC_
-#define RIO_PRAGMA_DIAGNOSTIC_POP               RIO_PRAGMA_DIAGNOSTIC_POP_GCC_
+#define RIO_PRAGMA_DIAGNOSTIC_PUSH RIO_PRAGMA_DIAGNOSTIC_PUSH_GCC_
+#define RIO_PRAGMA_DIAGNOSTIC_POP RIO_PRAGMA_DIAGNOSTIC_POP_GCC_
 #define RIO_PRAGMA_DIAGNOSTIC_IGNORED_CLANG_GCC RIO_PRAGMA_DIAGNOSTIC_IGNORED_GCC
 #elif RIO_COMPILER_MSVC
-#define RIO_PRAGMA_DIAGNOSTIC_PUSH              RIO_PRAGMA_DIAGNOSTIC_PUSH_MSVC_
-#define RIO_PRAGMA_DIAGNOSTIC_POP               RIO_PRAGMA_DIAGNOSTIC_POP_MSVC_
+#define RIO_PRAGMA_DIAGNOSTIC_PUSH RIO_PRAGMA_DIAGNOSTIC_PUSH_MSVC_
+#define RIO_PRAGMA_DIAGNOSTIC_POP RIO_PRAGMA_DIAGNOSTIC_POP_MSVC_
 #define RIO_PRAGMA_DIAGNOSTIC_IGNORED_CLANG_GCC(_x)
 #endif // RIO_COMPILER_
 

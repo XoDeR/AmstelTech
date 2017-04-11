@@ -1,10 +1,12 @@
+// Copyright (c) 2016, 2017 Volodymyr Syvochka
 #pragma once
 
 #include "Core/Base/RioCommon.h"
 #include "Core/Base/Cpu.h"
 #include "Core/Thread/Mutex.h"
-#include "Core/Base/Uint32T.h"
+#include "Core/Math/Uint32T.h"
 
+// TODO replace std::list with optimized data structure
 #include <list>
 
 namespace RioCore
@@ -191,3 +193,4 @@ namespace RioCore
 #endif // RIO_CONFIG_SUPPORTS_THREADING
 
 } // namespace RioCore
+// Copyright (c) 2016, 2017 Volodymyr Syvochka

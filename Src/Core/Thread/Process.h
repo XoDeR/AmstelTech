@@ -2,7 +2,7 @@
 
 #include "Core/Strings/StringUtils.h" // strlen
 
-#include "Core/Base/Uint32T.h"
+#include "Core/Math/Uint32T.h"
 
 #if RIO_PLATFORM_LINUX || RIO_PLATFORM_HURD
 #include <unistd.h>

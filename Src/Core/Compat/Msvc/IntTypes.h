@@ -45,7 +45,8 @@
 
 // 7.8 Format conversion of integer types
 
-typedef struct {
+typedef struct 
+{
    intmax_t quot;
    intmax_t rem;
 } imaxdiv_t;
@@ -185,11 +186,11 @@ typedef struct {
 #define SCNiMAX     "I64i"
 
 #ifdef _WIN64 // [
-#  define SCNdPTR     "I64d"
-#  define SCNiPTR     "I64i"
+#define SCNdPTR     "I64d"
+#define SCNiPTR     "I64i"
 #else  // _WIN64 ][
-#  define SCNdPTR     "ld"
-#  define SCNiPTR     "li"
+#define SCNdPTR     "ld"
+#define SCNiPTR     "li"
 #endif  // _WIN64 ]
 
 // The fscanf macros for unsigned integers are:
@@ -251,15 +252,15 @@ typedef struct {
 #define SCNXMAX     "I64X"
 
 #ifdef _WIN64 // [
-#  define SCNoPTR     "I64o"
-#  define SCNuPTR     "I64u"
-#  define SCNxPTR     "I64x"
-#  define SCNXPTR     "I64X"
+#define SCNoPTR     "I64o"
+#define SCNuPTR     "I64u"
+#define SCNxPTR     "I64x"
+#define SCNXPTR     "I64X"
 #else  // _WIN64 ][
-#  define SCNoPTR     "lo"
-#  define SCNuPTR     "lu"
-#  define SCNxPTR     "lx"
-#  define SCNXPTR     "lX"
+#define SCNoPTR     "lo"
+#define SCNuPTR     "lu"
+#define SCNxPTR     "lx"
+#define SCNXPTR     "lX"
 #endif  // _WIN64 ]
 
 #endif // __STDC_FORMAT_MACROS ]
@@ -285,7 +286,8 @@ imaxdiv_t __cdecl imaxdiv(intmax_t numer, intmax_t denom)
    result.quot = numer / denom;
    result.rem = numer % denom;
 
-   if (numer < 0 && result.rem > 0) {
+   if (numer < 0 && result.rem > 0) 
+   {
       // did division wrong; must fix up
       ++result.quot;
       result.rem -= denom;

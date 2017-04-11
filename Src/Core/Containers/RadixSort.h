@@ -1,3 +1,4 @@
+// Copyright (c) 2016, 2017 Volodymyr Syvochka
 #pragma once
 
 #include "Core/Base/RioCommon.h"
@@ -281,3 +282,4 @@ namespace RioCore
 #undef RIO_RADIXSORT_BIT_MASK
 
 } // namespace RioCore
+// Copyright (c) 2016, 2017 Volodymyr Syvochka
