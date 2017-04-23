@@ -17,9 +17,9 @@ namespace RioGui
 		std::string graphHeader;
 		std::string graphFooter;
 
-		Color backgroundColor = Color(20, 20, 20, 128);
-		Color foregroundColor = Color(255, 192, 0, 128);
-		Color textColor = Color(240, 240, 240, 192);
+		RioCore::Color4 backgroundColor = { 20, 20, 20, 128 };
+		RioCore::Color4 foregroundColor = { 255, 192, 0, 128 };
+		RioCore::Color4 textColor = { 240, 240, 240, 192 };
 		RioCore::Array<float> graphValueList;
 	public:
 		Graph(RioCore::Allocator& a, Widget* parent, const std::string& caption = "Untitled");
@@ -54,32 +54,32 @@ namespace RioGui
 			this->graphFooter = footer;
 		}
 
-		const Color& getBackgroundColor() const
+		const RioCore::Color4& getBackgroundColor() const
 		{
 			return this->backgroundColor;
 		}
 
-		void setBackgroundColor(const Color& backgroundColor)
+		void setBackgroundColor(const RioCore::Color4& backgroundColor)
 		{
 			this->backgroundColor = backgroundColor;
 		}
 
-		const Color& getForegroundColor() const
+		const RioCore::Color4& getForegroundColor() const
 		{
 			return this->foregroundColor;
 		}
 
-		void setForegroundColor(const Color& foregroundColor)
+		void setForegroundColor(const RioCore::Color4& foregroundColor)
 		{
 			this->foregroundColor = foregroundColor;
 		}
 
-		const Color& getTextColor() const
+		const RioCore::Color4& getTextColor() const
 		{
 			return this->textColor;
 		}
 
-		void setTextColor(const Color& textColor)
+		void setTextColor(const RioCore::Color4& textColor)
 		{
 			this->textColor = textColor;
 		}

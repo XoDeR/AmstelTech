@@ -21,29 +21,29 @@ namespace RioGui
 		float white;
 		float black;
 		Region dragRegion = None;
-		std::function<void(const Color &)> callback;
+		std::function<void(const RioCore::Color4&)> callback;
 	public:
-		ColorWheel(Widget* parent, const Color& color = Color(1.0f, 0.0f, 0.0f, 1.0f));
+		ColorWheel(Widget* parent, const RioCore::Color4& color = RioCore::Color4(1.0f, 0.0f, 0.0f, 1.0f));
 
-		std::function<void(const Color &)> getCallback() const
+		std::function<void(const RioCore::Color4&)> getCallback() const
 		{
 			return this->callback;
 		}
 
-		void setCallback(const std::function<void(const Color &)>& callback)
+		void setCallback(const std::function<void(const RioCore::Color4&)>& callback)
 		{
 			this->callback = callback;
 		}
 
-		Color getColor() const;
-		void setColor(const Color& color);
+		RioCore::Color4 getColor() const;
+		void setColor(const RioCore::Color4& color);
 
 		virtual RioCore::Vector2 getPreferredSize(GuiRenderContext* guiRenderContext) const override;
 		virtual void draw(GuiRenderContext* guiRenderContext) override;
 		virtual bool mouseButtonEvent(const RioCore::Vector2& p, int button, bool down, int modifiers) override;
 		virtual bool mouseDragEvent(const RioCore::Vector2& p, const RioCore::Vector2& rel, int button, int modifiers) override;
 	
-		Color hue2rgb(float h) const;
+		RioCore::Color4 hue2rgb(float h) const;
 		Region adjustPosition(const RioCore::Vector2& p, Region consideredRegions = Both);
 	};
 

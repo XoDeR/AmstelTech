@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "Widget.h"
-#include "GlUtil.h"
 
 namespace RioGui
 {
@@ -15,17 +14,17 @@ namespace RioGui
 	class RIO_EXPORT GraphicsCanvas : public Widget
 	{
 	protected:
-		Color backgroundColor = RioCore::Vector4{ 128, 128, 128, 255 };
+		RioCore::Color4 backgroundColor = RioCore::Vector4{ 128, 128, 128, 255 };
 		bool drawBorder = true;
 	public:
 		GraphicsCanvas(Widget* parent);
 
-		const Color& getBackgroundColor() const
+		const RioCore::Color4& getBackgroundColor() const
 		{
 			return this->backgroundColor;
 		}
 
-		void setBackgroundColor(const Color& backgroundColor)
+		void setBackgroundColor(const RioCore::Color4& backgroundColor)
 		{
 			this->backgroundColor = backgroundColor;
 		}

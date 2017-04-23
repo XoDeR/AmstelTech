@@ -9,25 +9,25 @@ namespace RioGui
 	class RIO_EXPORT ColorPicker : public PopupButton
 	{
 	protected:
-		std::function<void(const Color &)> callback;
+		std::function<void(const RioCore::Color4&)> callback;
 		ColorWheel* colorWheel;
 		Button* pickButton;
 	public:
-		ColorPicker(Widget* parent, const Color& color = Color(1.0f, 0.0f, 0.0f, 1.0f));
+		ColorPicker(Widget* parent, const RioCore::Color4& color = RioCore::Color4(1.0f, 0.0f, 0.0f, 1.0f));
 
 		// Set the change callback
-		std::function<void(const Color&)> getCallback() const
+		std::function<void(const RioCore::Color4&)> getCallback() const
 		{
 			return this->callback;
 		}
 
-		void setCallback(const std::function<void(const Color &)>& callback)
+		void setCallback(const std::function<void(const RioCore::Color4&)>& callback)
 		{
 			this->callback = callback;
 		}
 
-		Color getColor() const;
-		void setColor(const Color& color);
+		RioCore::Color4 getColor() const;
+		void setColor(const RioCore::Color4& color);
 	};
 
 } // namespace RioGui

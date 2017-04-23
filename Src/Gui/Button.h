@@ -30,8 +30,8 @@ namespace RioGui
 		IconPosition iconPosition = IconPosition::LeftCentered;
 		bool isPushed = false;
 		int buttonFlags = NormalButton;
-		Color backgroundColor = Color(0, 0);
-		Color textColor = Color(0, 0);
+		RioCore::Color4 backgroundColor = { 0, 0, 0, 0 };
+		RioCore::Color4 textColor = {0, 0, 0, 0};
 		std::function<void()> callback;
 		std::function<void(bool)> changeCallback;
 		std::vector<Button*> buttonGroup;
@@ -48,22 +48,22 @@ namespace RioGui
 			this->caption = caption;
 		}
 
-		const Color& getBackgroundColor() const
+		const RioCore::Color4& getBackgroundColor() const
 		{
 			return this->backgroundColor;
 		}
 
-		void setBackgroundColor(const Color& backgroundColor)
+		void setBackgroundColor(const RioCore::Color4& backgroundColor)
 		{
 			this->backgroundColor = backgroundColor;
 		}
 
-		const Color& getTextColor() const
+		const RioCore::Color4& getTextColor() const
 		{
 			return this->textColor;
 		}
 
-		void setTextColor(const Color& textColor)
+		void setTextColor(const RioCore::Color4& textColor)
 		{
 			this->textColor = textColor;
 		}
@@ -143,6 +143,12 @@ namespace RioGui
 		virtual RioCore::Vector2 getPreferredSize(GuiRenderContext* guiRenderContext) const override;
 		virtual bool mouseButtonEvent(const RioCore::Vector2& p, int button, bool down, int modifiers) override;
 		virtual void draw(GuiRenderContext* guiRenderContext) override;
+	protected:
+		// Determine whether an icon ID is a font-based icon
+		inline bool getIsFontIcon(int value)
+		{
+			return value >= 1024;
+		}
 	};
 
 } // namespace RioGui
