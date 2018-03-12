@@ -117,7 +117,7 @@ namespace MapInternalFn
 #endif // RBTREE_VERIFY
 
 	template <typename TKey, typename TValue>
-	inline uint32_t min(const Map<TKey, TValue>& m, uint32_t x)
+	inline uint32_t getMin(const Map<TKey, TValue>& m, uint32_t x)
 	{
 		if (x == m.sentinel)
 		{
@@ -133,7 +133,7 @@ namespace MapInternalFn
 	}
 
 	template <typename TKey, typename TValue>
-	inline uint32_t max(const Map<TKey, TValue>& m, uint32_t x)
+	inline uint32_t getMax(const Map<TKey, TValue>& m, uint32_t x)
 	{
 		if (x == m.sentinel)
 		{
@@ -149,11 +149,11 @@ namespace MapInternalFn
 	}
 
 	template <typename TKey, typename TValue>
-	inline uint32_t successor(const Map<TKey, TValue>& m, uint32_t x)
+	inline uint32_t getSuccessor(const Map<TKey, TValue>& m, uint32_t x)
 	{
 		if (getRight(m, x) != m.sentinel)
 		{
-			return min(m, getRight(m, x));
+			return MapInternalFn::getMin(m, getRight(m, x));
 		}
 
 		uint32_t y = getParent(m, x);
@@ -168,11 +168,11 @@ namespace MapInternalFn
 	}
 
 	template <typename TKey, typename TValue>
-	inline uint32_t predecessor(const Map<TKey, TValue>& m, uint32_t x)
+	inline uint32_t getPredecessor(const Map<TKey, TValue>& m, uint32_t x)
 	{
 		if (getLeft(m, x) != m.sentinel)
 		{
-			return max(m, getLeft(m, x));
+			return getMax(m, getLeft(m, x));
 		}
 
 		uint32_t y = getParent(m, x);
@@ -529,7 +529,7 @@ namespace MapFn
 		}
 		else
 		{
-			y = successor(m, n);
+			y = getSuccessor(m, n);
 		}
 
 		if (getLeft(m, y) != m.sentinel)

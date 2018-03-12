@@ -63,7 +63,7 @@ inline bool operator==(const FixedString& a, const FixedString& b)
 
 inline bool operator<(const FixedString& a, const FixedString& b)
 {
-	const uint32_t len = std::max(a.length, b.length);
+	const uint32_t len = (std::max)(a.length, b.length);
 	return strncmp(a.data, b.data, len) < 0;
 }
 
