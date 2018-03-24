@@ -39,6 +39,6 @@ namespace LogInternal
 		va_end(argumentList);
 	}
 
-} // namespace log
+} // namespace LogInternal
 
 } // namespace Rio
