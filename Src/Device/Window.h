@@ -10,7 +10,7 @@ namespace Rio
 struct Window
 {
 	// Opens the window
-	virtual void open(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t parent) = 0;
+	virtual void open(uint16_t x, uint16_t y, uint16_t width, uint16_t height) = 0;
 
 	// Closes the window
 	virtual void close() = 0;

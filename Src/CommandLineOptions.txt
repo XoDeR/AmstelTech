@@ -1,0 +1,14 @@
+Options:
+--sourceDataDirectory <path>				Use <path> as the source directory for resource compilation
+--destinationDataDirectory <path>			Use <path> as the destination directory for already compiled resources
+--sourceDataDirectoryToMap <name> <path>	Map <sourceDataDirectory>/<name> to <path>/<name>  
+--bootDirectory <prefix>					Use <prefix>/boot.config to boot the engine
+--compile									Perform a full compilation of the resources
+--platform <platform>						Compile resources for the given <platform>
+    linux
+    windows
+    android
+--continueAfterCompilation				Run the engine after the resource compilation stage
+--consolePort <port>					Set the port of the console
+--waitForConsole						Wait for the developer's console connection before starting the engine
+--serverMode							Run the engine in server mode
