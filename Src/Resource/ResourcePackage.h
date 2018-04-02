@@ -4,6 +4,7 @@
 #include "Core/Types.h"
 
 #include "Resource/Types.h"
+#include "World/Types.h"
 
 namespace Rio
 {

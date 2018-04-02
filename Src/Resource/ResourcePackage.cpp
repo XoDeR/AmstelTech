@@ -1,10 +1,9 @@
+#include "Resource/ResourcePackage.h"
+
 #include "Core/Containers/Array.h"
 
 #include "Resource/PackageResource.h"
 #include "Resource/ResourceManager.h"
-#include "Resource/ResourcePackage.h"
-
-#include "World/Types.h"
 
 namespace Rio
 {
@@ -25,7 +24,7 @@ void ResourcePackage::load()
 {
 	resourceManager->load(RESOURCE_TYPE_PACKAGE, packageId);
 	resourceManager->flush();
-	packageResource = (const PackageResource*)resourceManager->get(RESOURCE_TYPE_PACKAGE, packageId);
+	packageResource = (const PackageResource*)resourceManager->getResourceData(RESOURCE_TYPE_PACKAGE, packageId);
 
 	for (uint32_t i = 0; i < ArrayFn::getCount(packageResource->resourceList); ++i)
 	{
@@ -50,7 +49,7 @@ bool ResourcePackage::hasLoaded() const
 {
 	for (uint32_t i = 0; i < ArrayFn::getCount(packageResource->resourceList); ++i)
 	{
-		if (!resourceManager->can_get(packageResource->resourceList[i].type, packageResource->resourceList[i].name))
+		if (!resourceManager->hasResource(packageResource->resourceList[i].type, packageResource->resourceList[i].name))
 		{
 			return false;
 		}
