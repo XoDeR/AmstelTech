@@ -2,6 +2,8 @@
 
 #include "Config.h"
 
+#include "Core/Strings/StringId.h"
+
 #if AMSTEL_ENGINE_WORLD
 #include "World/Types.h"
 #endif // AMSTEL_ENGINE_WORLD
@@ -24,6 +26,8 @@
 namespace Rio
 {
 
+struct ShaderManager;
+
 struct Pipeline
 {
 	RioRenderer::TextureHandle textureHandleBufferList[2] = { RIO_RENDERER_INVALID_HANDLE_UINT16_T, RIO_RENDERER_INVALID_HANDLE_UINT16_T };
@@ -36,9 +40,7 @@ struct Pipeline
 	void destroy();
 	void reset(uint16_t width, uint16_t height);
 
-#if AMSTEL_ENGINE_WORLD
-	void render(ShaderManager& shaderManager, StringId32 program, uint8_t view, uint16_t width, uint16_t height);
-#endif // AMSTEL_ENGINE_WORLD
+	void render(ShaderManager& shaderManager, StringId32 program, uint8_t viewId, uint16_t width, uint16_t height);
 };
 
 } // namespace Rio

@@ -26,9 +26,7 @@
 #include "../Samples/Game2D/GameBase.h"
 #endif // AMSTEL_ENGINE_GAME2D_CPP
 
-#if AMSTEL_ENGINE_RESOURCE_MANAGER
 #include "Resource/Types.h"
-#endif // AMSTEL_ENGINE_RESOURCE_MANAGER
 
 #if AMSTEL_ENGINE_WORLD
 #include "World/Types.h"
@@ -52,10 +50,8 @@ struct Device
 
 	LogToFile loggerToFile;
 	
-#if AMSTEL_ENGINE_RESOURCE_MANAGER
 	ResourceLoader* resourceLoader = nullptr;
 	ResourceManager* resourceManager = nullptr;
-#endif // AMSTEL_ENGINE_RESOURCE_MANAGER
 
 	RioRendererAllocator* rioRendererAllocator = nullptr;
 	RioRendererCallback* rioRendererCallback = nullptr;
@@ -126,8 +122,7 @@ struct Device
 	void destroyWorld(World& world);
 #endif // AMSTEL_ENGINE_WORLD
 
-#if AMSTEL_ENGINE_RESOURCE_MANAGER
-	// Returns the resource package <id>
+	// Returns the resource package by <id>
 	ResourcePackage* createResourcePackageById(StringId64 id);
 
 	// Destroys the resource package <resourcePackage>
@@ -137,7 +132,6 @@ struct Device
 
 	// Reloads the resource <type> <name>
 	void reload(StringId64 type, StringId64 name);
-#endif // AMSTEL_ENGINE_RESOURCE_MANAGER
 
 	// Logs <message> to log file and console
 	void logToFile(const char* message);

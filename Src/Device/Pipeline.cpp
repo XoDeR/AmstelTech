@@ -2,11 +2,9 @@
 
 #include "Core/Types.h"
 
-#if AMSTEL_ENGINE_WORLD
-#include "World/ShaderManager.h"
-#endif // AMSTEL_ENGINE_WORLD
+#include "World/Renderer/ShaderManager.h"
 
-#include "RioCore/Math.h"
+#include "RioCore/Math/Math.h"
 
 namespace Rio
 {
@@ -143,24 +141,23 @@ void Pipeline::reset(uint16_t width, uint16_t height)
 	frameBufferHandle = RioRenderer::createFrameBuffer(countof(textureHandleBufferList), textureHandleBufferList);
 }
 
-#if AMSTEL_ENGINE_WORLD
-void Pipeline::render(ShaderManager& shaderManager, StringId32 program, uint8_t view, uint16_t width, uint16_t height)
+void Pipeline::render(ShaderManager& shaderManager, StringId32 program, uint8_t viewId, uint16_t width, uint16_t height)
 {
 	const RioRenderer::Caps* rendererCapabilities = RioRenderer::getCaps();
 
 	float orthoMatrix[16];
 	RioCore::getMatrixOrtho(orthoMatrix, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 100.0f, 0.0f, rendererCapabilities->homogeneousDepth);
 
-	RioRenderer::setViewClear(view
+	RioRenderer::setViewClear(viewId
 		, RIO_RENDERER_CLEAR_COLOR | RIO_RENDERER_CLEAR_DEPTH | RIO_RENDERER_CLEAR_STENCIL
 		, 0x000000ff
 		, 1.0f
 		, 0
 		);
 
-	RioRenderer::setViewFrameBuffer(view, RIO_RENDERER_INVALID_HANDLE_UINT16_T);
-	RioRenderer::setViewRect(view, 0, 0, width, height);
-	RioRenderer::setViewTransform(view, nullptr, orthoMatrix);
+	RioRenderer::setViewFrameBuffer(viewId, RIO_RENDERER_INVALID_HANDLE_UINT16_T);
+	RioRenderer::setViewRect(viewId, 0, 0, width, height);
+	RioRenderer::setViewTransform(viewId, nullptr, orthoMatrix);
 
 	const uint32_t samplerFlags = 0
 		| RIO_RENDERER_TEXTURE_RT
@@ -174,8 +171,7 @@ void Pipeline::render(ShaderManager& shaderManager, StringId32 program, uint8_t 
 	RioRenderer::setTexture(0, textureColor, textureHandleBufferList[0], samplerFlags);
 	screenSpaceQuad(width, height, 0.0f, rendererCapabilities->originBottomLeft);
 
-	shaderManager.submit(program, view, 0, RIO_RENDERER_STATE_RGB_WRITE | RIO_RENDERER_STATE_ALPHA_WRITE);
+	shaderManager.submit(program, viewId, 0, RIO_RENDERER_STATE_RGB_WRITE | RIO_RENDERER_STATE_ALPHA_WRITE);
 }
-#endif // AMSTEL_ENGINE_WORLD
 
 } // namespace Rio
